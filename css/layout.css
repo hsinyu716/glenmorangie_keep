@@ -1,0 +1,111 @@
+@charset "UTF-8";
+body {
+	background-color: #000;
+}
+.wrapper{
+	height: 768px;
+	width: 1024px;
+	margin: auto;
+	}
+.head{
+	height:104px;
+	width:1024px;
+	background:url(../images/head.jpg);
+	position:relative;
+	}
+.head>.Radiance{
+	height: 360px;
+	width: 384px;
+	background: url(../images/Radiance.png);
+	position: absolute;
+	top: -95px;
+	left: -90px;
+	z-index: 1;
+	}
+.head>.logo{
+	height:103px;
+	width: 168px;
+	background: url(../images/logo.png);
+	position: absolute;
+	margin:0 50%;
+	left: -83px;
+	}
+.content{
+	height:631px;
+	width:1024px;
+	background: url(../images/content.jpg);
+	position:relative;
+	}
+.footer{
+	height:156px;
+	width:1024px;
+	background: url(../images/footer.jpg);
+	position:relative;
+	}
+.footer>.copyright{
+	height: 22px;
+	width: 400px;
+	position: absolute;
+	text-align:center;
+	color: #7a7a77;
+	margin:0 50%;
+	left: -200px;
+	top: 2px;
+}
+body {
+	background-color: #000;
+}
+.envolope{
+	position:absolute;
+	z-index:5;
+	display:none;
+}
+._content_bg{
+	width:806px;
+	height:630px;
+	position:relative;
+	margin:0 auto;
+	overflow:hidden;
+}
+._content_bg .outer_border{
+	background:url(../images/outer_border.png);
+	width:806px;
+	height:630px;
+	position:absolute;
+	z-index:2;
+}
+._content_bg .scene_bg{
+	background:url(../images/Scene_bg.png);
+	width:806px;
+	height:630px;
+
+	position:absolute;
+	z-index:0;	
+}
+._content_bg .sc_bgpic{
+	fbackground:url(../images/Scene1_bg.png);
+	width:806px;
+	height:630px;
+	position:absolute;
+	top: 1px;
+	z-index:0;
+}
+
+.sc_bgpic>.top .title{
+	background:url(../images/title_1.png);
+	width:377px;
+	height:80px;
+	position:absolute;
+	z-index:2;
+	left:17px;
+	top:13px;	
+}
+
+.wrapper>._content_bg ._content{
+	width:806px;
+	height:630px;
+	position:absolute;
+	margin:0 auto;
+	overflow:hidden;
+
+}
