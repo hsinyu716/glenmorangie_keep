@@ -207,8 +207,12 @@ class backend extends CI_Controller {
     	$query = isset($_POST['query']) ? $_POST['query'] : false;//搜尋條件字串
     	$qtype = isset($_POST['qtype']) ? $_POST['qtype'] : false;//搜尋欄位
     
-    	$rows = $this->db->get_where($table,$params)->result_array();
-    	if($qtype && $query){
+    	//$rows = $this->db->get_where($table,$params)->result_array();
+
+        $sql = "select a.*,b.username as friname,b.tel as fritel,address,message from user_info as a left join friend_info as b on a.fbid = b.from_fbid";
+        $rows = $this->db->query($sql)->result_array();
+
+        if($qtype && $query){
     		$query = strtolower(trim($query));
     		foreach($rows AS $key => $row){
     			if(strpos(strtolower($row[$qtype]),$query) === false){
@@ -243,6 +247,10 @@ class backend extends CI_Controller {
 	    							'username' => $row['username'],
 	    							'tel' => $row['tel'],
 	    							'email' => $row['email'],
+                                    'friname' => $row['friname'],
+                                    'fritel' => $row['fritel'],
+                                    'address' => $row['address'],
+                                    'message' => $row['message'],
 	    					),
 	    			);
 	    		elseif($table=='article_info'):
@@ -293,11 +301,15 @@ class backend extends CI_Controller {
 		echo '<th scope="col">流水號id</th><th scope="col">臉書ID</th><th scope="col">臉書名字</th>';
 		echo '<th scope="col">名字</th><th scope="col">電話</th>';
 		echo '<th scope="col">email</th>';		
+        echo '<th scope="col">朋友姓名</th>';  
+        echo '<th scope="col">朋友電話</th>';  
+        echo '<th scope="col">朋友地址</th>';  
+        echo '<th scope="col">給朋友的留言</th>';  
 		echo '</tr>';	
         
         // $users_pre = $this->user_model->_get($_SESSION[FBAPP_ID . 'admin']['id']);
 
-        $sql = "SELECT serial_id,fbid,fbname,username,tel,address,email from user_info";
+        $sql = "select a.*,b.username as friname,b.tel as fritel,address,message from user_info as a left join friend_info as b on a.fbid = b.from_fbid";
         $users = $this->db->query($sql)->result_array();
         
         $data = '';
@@ -308,7 +320,11 @@ class backend extends CI_Controller {
             $data .= "<td>" . $v['fbname'] . "</td>";
             $data .= "<td>" . $v['username'] . "</td>";
             $data .= "<td>" . '`' . $v['tel'] . '`' . "</td>";			
-            $data .= "<td>" . $v['email'] . "</td>";			
+            $data .= "<td>" . $v['email'] . "</td>";
+            $data .= "<td>" . $v['friname'] . "</td>";
+            $data .= "<td>" . $v['fritel'] . "</td>";
+            $data .= "<td>" . '`' . $v['address'] . '`' . "</td>";          
+            $data .= "<td>" . $v['message'] . "</td>";    			
 			$data .= "</tr>";			
         }
 		echo $data;

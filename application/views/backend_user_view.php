@@ -29,13 +29,16 @@ var main = function(){
         			{display: 'fbname', name : 'fbname', width : 120, sortable : true, align: 'center'},
         			{display: '姓名', name : 'username', width : 100, sortable : true, align: 'center'},
         			{display: '電話', name : 'tel', width : 230, sortable : true, align: 'center'},
-        			{display: 'email', name : 'email', width : 120, sortable : false, align: 'center'}
+        			{display: 'email', name : 'email', width : 120, sortable : false, align: 'center'},
+                    {display: '朋友姓名', name : 'friname', width : 100, sortable : true, align: 'center'},
+                    {display: '朋友電話', name : 'fritel', width : 130, sortable : true, align: 'center'},
+                    {display: '朋友地址', name : 'address', width : 220, sortable : false, align: 'center'},
+                    {display: '給朋友的留言', name : 'message', width : 320, sortable : false, align: 'center'}
         			],
-
         		searchitems : [
         			{display: 'fbid', name : 'fbid', isdefault: true},
         			],
-        		sortname: "ID",
+        		sortname: "serial_id",
         		sortorder: "asc",
         		usepager: true,
         		resizable:false,
